@@ -1,0 +1,41 @@
+{
+  "extends": [
+    "tslint:recommended",
+    "tslint-eslint-rules",
+    "tslint-config-prettier"
+  ],
+  "rules": {
+    "interface-over-type-literal": false,
+    "no-unused-expression": false,
+    "eofline": false,
+    "object-literal-sort-keys": false,
+    "ordered-imports": false,
+    "prefer-const": true,
+    "no-var-keyword": true,
+    "quotemark": [
+      true,
+      "single",
+      "jsx-double"
+    ],
+    "trailing-comma": [
+      false
+    ],
+    "semicolon": [
+      true,
+      "never"
+    ],
+    "no-console": false,
+    "curly": false,
+    "brace-style": [
+      true,
+      "1tbs",
+      {
+        "allowSingleLine": true
+      }
+    ],
+    "max-line-length": [
+      true,
+      180
+    ]
+  }
+}
