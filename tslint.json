@@ -1,10 +1,22 @@
 {
   "extends": [
     "tslint:recommended",
-    "tslint-eslint-rules",
-    "tslint-config-prettier"
+    "tslint-eslint-rules"
   ],
   "rules": {
+    "typedef": [
+      true,
+      "call-signature",
+      "arrow-call-signature",
+      "parameter",
+      "arrow-parameter",
+      "property-declaration",
+      "variable-declaration",
+      "member-variable-declaration",
+      "object-destructuring",
+      "array-destructuring"
+    ],
+    "object-literal-shorthand": true,
     "interface-over-type-literal": false,
     "no-unused-expression": false,
     "eofline": false,

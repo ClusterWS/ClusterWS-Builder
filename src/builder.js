@@ -48,7 +48,7 @@ return rollup({
   external(id) {
     return /^[\w-]+$/.test(id)
   }
-}).then((bundle) => bundle.write({ format: process.env.FORMAT, file: `./${process.env.DIST}/${process.env.DISTFILE}`, name: 'Index' }).then(() => {
+}).then((bundle) => bundle.write({ format: process.env.FORMAT, file: `./${process.env.DIST}/${process.env.DISTFILE}`, name: process.env.NAME }).then(() => {
   if (!(process.env.NPM === 'true')) return
 
   require('dts-bundle').bundle({

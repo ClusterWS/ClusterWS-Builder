@@ -11,6 +11,7 @@ const availableArguments = {
   '-min': () => fullArguments['min'] = true,
   '-npm': () => fullArguments['npm'] = true,
   '-type': (str) => fullArguments['type'] = str.substring(str.lastIndexOf("=") + 1),
+  '-name': (str) => fullArguments['name'] = str.substring(str.lastIndexOf("=") + 1),
   '-src': (str) => fullArguments['src'] = str.substring(str.lastIndexOf("=") + 1),
   '-srcFile': (str) => fullArguments['srcFile'] = str.substring(str.lastIndexOf("=") + 1),
   '-dist': (str) => fullArguments['dist'] = str.substring(str.lastIndexOf("=") + 1),
@@ -36,7 +37,8 @@ fullArguments = {
   DISTFILE: fullArguments.distFile || 'index.js',
   FORMAT: fullArguments.format || 'cjs',
   TSLINT: fullArguments.tslint || './node_modules/clusterws-builder/tslint.json',
-  TSCONF: fullArguments.tsconf || './node_modules/clusterws-builder/tsconfig.json'
+  TSCONF: fullArguments.tsconf || './node_modules/clusterws-builder/tsconfig.json',
+  NAME: fullArguments.name || 'ClusterWS'
 }
 
 let execCommand = `tslint -c ${fullArguments.TSLINT} "./${fullArguments.SRC}/**/*.ts" && cross-env `
