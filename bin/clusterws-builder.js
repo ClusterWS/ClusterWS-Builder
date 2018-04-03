@@ -49,6 +49,4 @@ for (key in fullArguments) {
 
 execCommand += `node ./node_modules/clusterws-builder/src/builder.js --color`
 
-console.log(execCommand)
-
-// shell.exec(execCommand)
+shell.exec(execCommand)
