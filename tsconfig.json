@@ -2,11 +2,11 @@
   "compilerOptions": {
     "target": "es5",
     "module": "ES2015",
-    "removeComments": true,
+    "removeComments": true
   },
   "files": [
-    "../@types/node/index.d.ts",
-    "../@types/uws/index.d.ts"
+    "./node_modules/@types/node/index.d.ts",
+    "./node_modules/@types/uws/index.d.ts"
   ],
   "include": [
     "**/*"

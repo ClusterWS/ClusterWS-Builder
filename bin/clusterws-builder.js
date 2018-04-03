@@ -26,7 +26,6 @@ args.forEach(arg => {
   availableArguments[arg.substring(0, arg.lastIndexOf('='))] && availableArguments[arg.substring(0, arg.lastIndexOf('='))](arg)
 })
 
-console.log(fullArguments)
 fullArguments = {
   MIN: fullArguments.min || false,
   NPM: fullArguments.npm || false,
@@ -40,7 +39,7 @@ fullArguments = {
   TSCONF: fullArguments.tsconf || './node_modules/clusterws-builder/tsconfig.json'
 }
 
-let execCommand = `tslint -c ${fullArguments.tslint} "./${fullArguments.src}/**/*.ts" && cross-env `
+let execCommand = `tslint -c ${fullArguments.TSLINT} "./${fullArguments.SRC}/**/*.ts" && cross-env `
 
 for (key in fullArguments) {
   if (fullArguments.hasOwnProperty(key))
