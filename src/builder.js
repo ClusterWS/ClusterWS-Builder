@@ -45,9 +45,7 @@ return rollup({
     }),
     filesize()
   ],
-  external(id) {
-    return /^[\w-]+$/.test(id)
-  }
+  external: ['cluster', 'http', 'https', 'uws', 'crypto']
 }).then((bundle) => bundle.write({ format: process.env.FORMAT, file: `./${process.env.DIST}/${process.env.DISTFILE}`, name: process.env.NAME }).then(() => {
   if (!(process.env.NPM === 'true')) return
 
