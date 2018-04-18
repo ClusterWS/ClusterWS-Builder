@@ -12,8 +12,10 @@ if (process.env.NPM === 'true') {
   tsConfigOptions.compilerOptions['declarationDir'] = `./${process.env.SRC}`
 }
 
-if (process.env.TYPE === 'node' && (!tsConfigOptions.compilerOptions['moduleResolution'] || tsConfigOptions.compilerOptions['moduleResolution'] !== 'node'))
+if (process.env.TYPE === 'node' && (!tsConfigOptions.compilerOptions['moduleResolution'] || tsConfigOptions.compilerOptions['moduleResolution'] !== 'node')) {
   tsConfigOptions.compilerOptions['moduleResolution'] = 'node'
+  tsConfigOptions.compilerOptions['target'] = 'es6'
+}
 
 if (process.env.TSCONF === './node_modules/clusterws-builder/tsconfig.json' && process.env.TYPE !== 'node')
   delete tsConfigOptions['files']
