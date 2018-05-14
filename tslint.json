@@ -1,8 +1,5 @@
 {
-  "extends": [
-    "tslint:recommended",
-    "tslint-eslint-rules"
-  ],
+  "extends": ["tslint:recommended", "tslint-eslint-rules"],
   "rules": {
     "typedef": [
       true,
@@ -24,18 +21,9 @@
     "ordered-imports": false,
     "prefer-const": true,
     "no-var-keyword": true,
-    "quotemark": [
-      true,
-      "single",
-      "jsx-double"
-    ],
-    "trailing-comma": [
-      false
-    ],
-    "semicolon": [
-      true,
-      "never"
-    ],
+    "quotemark": [true, "single", "jsx-double"],
+    "trailing-comma": [false],
+    "semicolon": [true, "always"],
     "no-console": false,
     "curly": false,
     "brace-style": [
@@ -45,9 +33,6 @@
         "allowSingleLine": true
       }
     ],
-    "max-line-length": [
-      true,
-      180
-    ]
+    "max-line-length": [true, 180]
   }
 }
