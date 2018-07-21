@@ -1,6 +1,6 @@
 {
   "name": "clusterws-builder",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "index.js",
   "scripts": {
     "test": "node ./bin/clusterws-builder.js"
@@ -11,16 +11,16 @@
   "author": "Dmitrii Goriunov",
   "license": "ISC",
   "dependencies": {
-    "cross-env": "^5.1.4",
-    "dts-bundle": "^0.7.3",
-    "rollup": "^0.57.1",
-    "rollup-plugin-filesize": "^1.5.0",
-    "rollup-plugin-typescript2": "^0.12.0",
+    "cross-env": "5.2.0",
+    "dts-bundle": "0.7.3",
+    "rollup": "0.63.4",
+    "rollup-plugin-filesize": "4.0.1",
+    "rollup-plugin-typescript2": "0.16.1",
     "rollup-plugin-uglify": "^3.0.0",
-    "shelljs": "^0.8.1",
+    "shelljs": "0.8.2",
     "tslint": "^5.9.1",
     "tslint-config-prettier": "^1.10.0",
     "tslint-eslint-rules": "^5.1.0",
-    "typescript": "^2.8.1"
+    "typescript": "2.8.4"
   }
 }
