@@ -34,7 +34,7 @@ return rollup({
       cacheRoot: './node_modules/clusterws-builder/cache'
     }),
     plugins.addExportsPlugin(),
-    !(process.env.NPM === 'true') || plugins.copyAssetsPlugin([
+    !(process.env.NPM === 'true') || process.env.NO_ASSETS || plugins.copyAssetsPlugin([
       { src: './LICENSE', dist: `./${process.env.DIST}/LICENSE` },
       { src: './README.md', dist: `./${process.env.DIST}/README.md` },
       { src: './package.json', dist: `./${process.env.DIST}/package.json`, remove: ['devDependencies', 'scripts'] }

@@ -10,6 +10,7 @@ let fullArguments = {}
 const availableArguments = {
   '-min': () => fullArguments['min'] = true,
   '-npm': () => fullArguments['npm'] = true,
+  '-no_assets': () => fullArguments['no_assets'] = true,
   '-type': (str) => fullArguments['type'] = str.substring(str.lastIndexOf("=") + 1),
   '-name': (str) => fullArguments['name'] = str.substring(str.lastIndexOf("=") + 1),
   '-src': (str) => fullArguments['src'] = str.substring(str.lastIndexOf("=") + 1),
@@ -22,12 +23,13 @@ const availableArguments = {
 }
 
 args.forEach(arg => {
-  if (arg === '-min' || arg === '-npm')
+  if (arg === '-min' || arg === '-npm' || arg === '-no_assets')
     return availableArguments[arg] && availableArguments[arg]()
   availableArguments[arg.substring(0, arg.lastIndexOf('='))] && availableArguments[arg.substring(0, arg.lastIndexOf('='))](arg)
 })
 
 fullArguments = {
+  NO_ASSETS: fullArguments.no_assets || false,
   MIN: fullArguments.min || false,
   NPM: fullArguments.npm || false,
   TYPE: fullArguments.type || 'node',
