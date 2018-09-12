@@ -1,55 +1,16 @@
 #!/usr/bin/env node
 process.cwd()
 
+const fs = require('fs');
 const shell = require('shelljs')
 
 const args = process.argv.slice()
 
-let fullArguments = {}
+let configFile = args[args.indexOf("-c") + 1];
 
-const availableArguments = {
-  '-min': () => fullArguments['min'] = true,
-  '-npm': () => fullArguments['npm'] = true,
-  '-no_assets': () => fullArguments['no_assets'] = true,
-  '-type': (str) => fullArguments['type'] = str.substring(str.lastIndexOf("=") + 1),
-  '-name': (str) => fullArguments['name'] = str.substring(str.lastIndexOf("=") + 1),
-  '-src': (str) => fullArguments['src'] = str.substring(str.lastIndexOf("=") + 1),
-  '-srcFile': (str) => fullArguments['srcFile'] = str.substring(str.lastIndexOf("=") + 1),
-  '-dist': (str) => fullArguments['dist'] = str.substring(str.lastIndexOf("=") + 1),
-  '-distFile': (str) => fullArguments['distFile'] = str.substring(str.lastIndexOf("=") + 1),
-  '-format': (str) => fullArguments['format'] = str.substring(str.lastIndexOf("=") + 1),
-  '-tslint': (str) => fullArguments['tslint'] = str.substring(str.lastIndexOf("=") + 1),
-  '-tsconf': (str) => fullArguments['tsconf'] = str.substring(str.lastIndexOf("=") + 1)
-}
+const configs = JSON.parse(fs.readFileSync(configFile));
 
-args.forEach(arg => {
-  if (arg === '-min' || arg === '-npm' || arg === '-no_assets')
-    return availableArguments[arg] && availableArguments[arg]()
-  availableArguments[arg.substring(0, arg.lastIndexOf('='))] && availableArguments[arg.substring(0, arg.lastIndexOf('='))](arg)
-})
+let execCommand = `tslint -c ${configs.tslint} "./${configs.src}/**/*.ts" && cross-env CONFIGFILE=${configFile} `;
+execCommand += `node ./node_modules/clusterws-builder/src/builder.js --color`;
 
-fullArguments = {
-  NO_ASSETS: fullArguments.no_assets || false,
-  MIN: fullArguments.min || false,
-  NPM: fullArguments.npm || false,
-  TYPE: fullArguments.type || 'node',
-  SRC: fullArguments.src || 'src',
-  SRCFILE: fullArguments.srcFile || 'index.ts',
-  DIST: fullArguments.dist || 'dist',
-  DISTFILE: fullArguments.distFile || 'index.js',
-  FORMAT: fullArguments.format || 'cjs',
-  TSLINT: fullArguments.tslint || './node_modules/clusterws-builder/tslint.json',
-  TSCONF: fullArguments.tsconf || './node_modules/clusterws-builder/tsconfig.json',
-  NAME: fullArguments.name || 'ClusterWS'
-}
-
-let execCommand = `tslint -c ${fullArguments.TSLINT} "./${fullArguments.SRC}/**/*.ts" && cross-env `
-
-for (key in fullArguments) {
-  if (fullArguments.hasOwnProperty(key))
-    execCommand += `${key}=${fullArguments[key]} `
-}
-
-execCommand += `node ./node_modules/clusterws-builder/src/builder.js --color`
-
-shell.exec(execCommand)
+shell.exec(execCommand);
