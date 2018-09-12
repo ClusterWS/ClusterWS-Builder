@@ -1,6 +1,7 @@
 const fs = require('fs');
 const rollup = require('rollup').rollup;
 const terser = require('rollup-plugin-terser').terser;
+const plugins = require('./plugins');
 const filesize = require('rollup-plugin-filesize');
 const typescriptPlugin = require('rollup-plugin-typescript2');
 
@@ -28,9 +29,10 @@ function build(configs) {
         useTsconfigDeclarationDir: true,
         tsconfigDefaults: configs.tsConfigs,
         tsconfig: undefined,
-        cacheRoot: "./node_modules/clusterws-builder/cache"
+        cacheRoot: "./node_modules/ts-builder/cache"
       }),
       configs.uglify && terser(configs.uglify),
+      plugins.addExportsPlugin(),
       filesize()
     ],
     external: configs.external || []

@@ -11,7 +11,7 @@ function addExportsPlugin() {
       if (matchingModules) {
         for (let i = 0; i < matchingModules.length; i++) {
           let name = matchingModules[i].split('module.exports =')[1]
-          result = result.replace('module.exports =' + name, 'module.exports =' + name + '; module.exports.default =' + name)
+          result = result.replace('module.exports =' + name, 'module.exports =' + name + ' module.exports.default =' + name)
         }
       }
 
@@ -19,7 +19,7 @@ function addExportsPlugin() {
       if (matchingExports) {
         for (let i = 0; i < matchingExports.length; i++) {
           let name = matchingExports[i].split('exports.default =')[1]
-          result = result.replace('exports.default =' + name, 'exports.default =' + name + '; module.exports = exports["default"]')
+          result = result.replace('exports.default =' + name, 'exports.default =' + name + ' module.exports = exports["default"]')
         }
       }
 

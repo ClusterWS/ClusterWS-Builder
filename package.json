@@ -1,12 +1,12 @@
 {
-  "name": "clusterws-builder",
-  "version": "0.2.4",
+  "name": "ts-builder",
+  "version": "0.6.15",
   "main": "index.js",
   "scripts": {
-    "test": "node ./bin/clusterws-builder.js"
+    "test": "node ./bin/ts-builder.js"
   },
   "bin": {
-    "clusterws-builder": "./bin/clusterws-builder.js"
+    "ts-builder": "./bin/ts-builder.js"
   },
   "author": "Dmitrii Goriunov",
   "license": "ISC",
