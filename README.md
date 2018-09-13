@@ -59,6 +59,7 @@ Create `tsbuid.json` file in you project.
             "moduleResolution": "node",
             // if you enable declaration it will be built in dist folder and bind together
             "declaration": true,
+            // if you dont provide declarationDir types dir will be ./node_modules/ts-builde/types/
             "declarationDir": "./src/"
         },
         "files": [

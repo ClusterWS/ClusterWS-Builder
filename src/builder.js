@@ -24,6 +24,10 @@ function build(configs) {
   let declarationFile = configs.output.file.split(".").slice(0, -1).join(".");
   configs.output.file = configs.distFolder + configs.output.file;
 
+  if (configs.tsConfigs.compilerOptions.declaration && !configs.tsConfigs.compilerOptions.declarationDir) {
+    configs.tsConfigs.compilerOptions.declarationDir = "./node_modules/ts-builder/types/"
+  }
+
   return rollup({
     input: `${configs.src}${configs.main}`,
     plugins: [
@@ -51,7 +55,7 @@ function build(configs) {
         name: "index",
         main: `${configs.tsConfigs.compilerOptions.declarationDir}**/*.d.ts`,
         out: path.join(process.env.PWD, `${configs.distFolder}${declarationFile}.d.ts`),
-        removeSource: true,
+        // removeSource: true,
         outputAsModuleFolder: true,
         emitOnIncludedFileNotFound: true
       })
