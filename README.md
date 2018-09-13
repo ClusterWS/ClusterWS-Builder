@@ -1,6 +1,24 @@
 ## TS Builder
-Module to simplify rollup typescript applications by providing single `tsbuid.json` file with all configurations:
+Module to simplify rollup typescript applications by providing single `tsbuid.json` file with all configurations.
 
+### Installation
+Run:
+
+```
+npm -i ts-builder
+```
+
+### Cinfig and execution
+Add to scripts in `package.json`:
+
+```
+"build": "ts-builder -c ./tsbuild.json"
+```
+
+Create `tsbuid.json` file in you project.
+
+
+All availabe Configurations:
 ```js
 {
     // src folder where is all and main ts file placed
@@ -53,6 +71,28 @@ Module to simplify rollup typescript applications by providing single `tsbuid.js
             "./old_src/**/*"
         ]
     },
+
+    // copy any assets to the dist folder
+    "copy": [
+        {   // from 
+            "src": "./LICENSE",
+            // to
+            "dist": "./dist/LICENSE"
+        },
+        {
+            "src": "./.github/README.md",
+            "dist": "./dist/README.md"
+        },
+        {
+            "src": "./package.json",
+            "dist": "./dist/package.json",
+            // remove method works only for json files (you can remove any property)
+            "remove": [
+                "devDependencies",
+                "scripts"
+            ]
+        }
+    ]
 
     // if you would like to run multiple builds with different configs use this:
     // each item in array will be merged with globral configs and ovewrite it 

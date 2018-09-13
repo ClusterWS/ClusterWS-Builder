@@ -33,14 +33,7 @@ function copyAssetsPlugin(options) {
   return {
     ongenerate() {
       options.forEach(item => {
-        if (!fs.existsSync(item.src)) {
-          item.src = item.src.replace('./', './.github/')
-
-          if (!fs.existsSync(item.src))
-            item.src = item.src.replace('./.github/', './docs/')
-
-          if (!fs.existsSync(item.src)) return
-        }
+        if (!fs.existsSync(item.src)) return
         const distPath = path.dirname(item.dist)
 
         if (!fs.existsSync(distPath))
