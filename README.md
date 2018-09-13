@@ -65,10 +65,10 @@ Create `tsbuid.json` file in you project.
             "./node_modules/@types/node/index.d.ts"
         ],
         "exclude": [
-            "./old_src/**/*.test.ts"
+            "./src/**/*.test.ts"
         ],
         "include": [
-            "./old_src/**/*"
+            "./src/**/*"
         ]
     },
 
@@ -87,6 +87,7 @@ Create `tsbuid.json` file in you project.
             "src": "./package.json",
             "dist": "./dist/package.json",
             // remove method works only for json files (you can remove any property)
+            // works only on root level (will be nchaged in future)
             "remove": [
                 "devDependencies",
                 "scripts"
