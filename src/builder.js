@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const rollup = require('rollup').rollup;
 const terser = require('rollup-plugin-terser').terser;
 const plugins = require('./plugins');
@@ -20,6 +21,7 @@ async function run() {
 }
 
 function build(configs) {
+  let declarationFile = configs.output.file.split(".").slice(0, -1).join(".");
   configs.output.file = configs.distFolder + configs.output.file;
 
   return rollup({
@@ -48,7 +50,7 @@ function build(configs) {
         referenceExternals: false,
         name: "index",
         main: `${configs.src}**/*.d.ts`,
-        out: `../${configs.distFolder}/${configs.output.file.split(".").slice(0, -1).join(".")}.d.ts`,
+        out: path.join(process.env.PWD, `${configs.distFolder}${declarationFile}.d.ts`),
         removeSource: true,
         outputAsModuleFolder: true,
         emitOnIncludedFileNotFound: true
