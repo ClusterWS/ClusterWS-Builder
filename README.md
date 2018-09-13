@@ -8,8 +8,8 @@ Run:
 npm -i ts-builder
 ```
 
-### Cinfig and execution
-Add to scripts in `package.json`:
+### Cinfig build
+Add to your `package.json` scripts:
 
 ```
 "build": "ts-builder -c ./tsbuild.json"
@@ -17,8 +17,7 @@ Add to scripts in `package.json`:
 
 Create `tsbuid.json` file in you project.
 
-
-All availabe Configurations:
+### Available Configurations:
 ```js
 {
     // src folder where is all and main ts file placed
@@ -58,6 +57,7 @@ All availabe Configurations:
             "module": "ES2015",
             "removeComments": true,
             "moduleResolution": "node",
+            // if you enable declaration it will be built in dist folder and bind together
             "declaration": true,
             "declarationDir": "./src/"
         },
@@ -98,8 +98,8 @@ All availabe Configurations:
     // each item in array will be merged with globral configs and ovewrite it 
     "builds": [
         {
-            "src": "./app1/"
             // all same configs as above
+            "src": "./app1/"
             "output": {
                 "format": "cjs",
                 "file": "hello.js",
@@ -107,8 +107,8 @@ All availabe Configurations:
             }
         },
         {
-            "src": "./app2/"
             // all same configs as above
+            "src": "./app2/"
             "output": {
                 "format": "cjs",
                 "file": "play.js",
