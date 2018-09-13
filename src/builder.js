@@ -49,7 +49,7 @@ function build(configs) {
         externals: false,
         referenceExternals: false,
         name: "index",
-        main: `${configs.src}**/*.d.ts`,
+        main: `${configs.tsConfigs.compilerOptions.declarationDir}**/*.d.ts`,
         out: path.join(process.env.PWD, `${configs.distFolder}${declarationFile}.d.ts`),
         removeSource: true,
         outputAsModuleFolder: true,
