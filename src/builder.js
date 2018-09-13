@@ -31,8 +31,8 @@ function build(configs) {
         tsconfig: undefined,
         cacheRoot: "./node_modules/ts-builder/cache"
       }),
-      configs.uglify && terser(configs.uglify),
-      configs.copy && plugins.copyAssetsPlugin(configs.copy),
+      !configs.uglify || terser(configs.uglify),
+      !configs.copy || plugins.copyAssetsPlugin(configs.copy),
       plugins.addExportsPlugin(),
       filesize()
     ],
@@ -48,7 +48,7 @@ function build(configs) {
         referenceExternals: false,
         name: "index",
         main: `${configs.src}**/*.d.ts`,
-        out: `../${configs.distFolder}/index.d.ts`,
+        out: `../${configs.distFolder}/${configs.output.file.split(".").slice(0, -1).join(".")}.d.ts`,
         removeSource: true,
         outputAsModuleFolder: true,
         emitOnIncludedFileNotFound: true

@@ -1,6 +1,6 @@
 {
   "name": "ts-builder",
-  "version": "0.6.17",
+  "version": "0.7.0",
   "main": "index.js",
   "scripts": {
     "test": "node ./bin/ts-builder.js"
